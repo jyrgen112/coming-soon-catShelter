@@ -1,4 +1,134 @@
-// Fade-in animation on page load
+// Email notification form handler
+document.addEventListener('DOMContentLoaded', function() {
+    const emailForm = document.querySelector('.email-form');
+    const emailInput = document.querySelector('.email-input');
+    const submitBtn = document.querySelector('.submit-btn');
+
+    // Store submitted emails (in a real app, this would go to a server)
+    let submittedEmails = [];
+
+    emailForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = emailInput.value.trim();
+        
+        // Validate email format
+        if (!isValidEmail(email)) {
+            showMessage('Please enter a valid email address', 'error');
+            return;
+        }
+
+        // Check if email already submitted
+        if (submittedEmails.includes(email)) {
+            showMessage('This email is already registered!', 'info');
+            return;
+        }
+
+        // Simulate submission (disable button temporarily)
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        
+        // Simulate API call delay
+        setTimeout(() => {
+            // Store email
+            submittedEmails.push(email);
+            
+            // Show success message
+            showMessage('Thank you! You\'ll be notified when we launch 🐱', 'success');
+            
+            // Clear input
+            emailInput.value = '';
+            
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit';
+            
+            // Optional: Store in localStorage for persistence
+            localStorage.setItem('notifyEmails', JSON.stringify(submittedEmails));
+        }, 800);
+    });
+
+    // Email validation function
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Show message function
+    function showMessage(text, type) {
+        // Remove any existing message
+        const existingMsg = document.querySelector('.notification-message');
+        if (existingMsg) {
+            existingMsg.remove();
+        }
+
+        // Create message element
+        const message = document.createElement('div');
+        message.className = `notification-message ${type}`;
+        message.textContent = text;
+        
+        // Style the message
+        message.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 1000;
+            animation: slideDown 0.3s ease-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        `;
+
+        // Set color based on type
+        if (type === 'success') {
+            message.style.backgroundColor = '#4CAF50';
+            message.style.color = 'white';
+        } else if (type === 'error') {
+            message.style.backgroundColor = '#f44336';
+            message.style.color = 'white';
+        } else if (type === 'info') {
+            message.style.backgroundColor = '#2196F3';
+            message.style.color = 'white';
+        }
+
+        // Add animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add to page
+        document.body.appendChild(message);
+
+        // Remove after 4 seconds
+        setTimeout(() => {
+            message.style.animation = 'slideDown 0.3s ease-out reverse';
+            setTimeout(() => message.remove(), 300);
+        }, 4000);
+    }
+
+    // Load previously submitted emails from localStorage
+    const stored = localStorage.getItem('notifyEmails');
+    if (stored) {
+        try {
+            submittedEmails = JSON.parse(stored);
+        } catch (e) {
+            console.error('Error loading stored emails:', e);
+        }
+    }
+});// Fade-in animation on page load
 document.addEventListener('DOMContentLoaded', () => {
     // All sections visible immediately on load
     const sections = [

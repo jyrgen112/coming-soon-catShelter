@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,6 @@ body {
     text-align: center;
 }
 
-/* Coming Soon Heading */
 h1 {
     font-size: 2.5rem;
     font-weight: bold;
@@ -22,7 +21,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Countdown Timer Section */
 .countdown-container {
     display: flex;
     justify-content: center;
@@ -61,7 +59,6 @@ h1 {
     margin: 30px 10px 0 10px;
 }
 
-/* Cat Icon in Coming Soon - Updated: removed background */
 .button-w-cat {
     box-sizing: border-box;
     display: inline-block;
@@ -79,7 +76,6 @@ h1 {
     pointer-events:none;
 }
 
-/* Donate Button */
 button {
     background-color: #e89b5f;
     color: #FFFFFF;
@@ -102,7 +98,6 @@ button:active {
     transform: translateY(0);
 }
 
-/* Features Section */
 .features-section h2 {
     font-size: 2rem;
     font-weight: bold;
@@ -111,7 +106,6 @@ button:active {
     margin-top: 80px;
 }
 
-/* Features Container */
 .features-container {
     max-width: 700px;
     margin: 0 auto;
@@ -120,7 +114,6 @@ button:active {
     padding: 20px;
 }
 
-/* Feature Cards Base Style */
 .feature-card {
     background-color: #e89b5f;
     border: 2px solid #1a1a1a;
@@ -144,19 +137,16 @@ button:active {
     margin-bottom: 10px;
 }
 
-/* Top Left - Virtual Cat Companion */
 .feature-card:nth-child(1) {
     top: 0;
     left: 0;
 }
 
-/* Top Right - Real-Time Shelter Support */
 .feature-card:nth-child(2) {
     top: 0;
     right: 0;
 }
 
-/* Center Cat Icon */
 .center-cat {
     position: absolute;
     top: 25%;
@@ -166,7 +156,6 @@ button:active {
     z-index: 10;
 }
 
-/* Center Bottom - Reward System */
 .feature-card:nth-child(4) {
     position: absolute;
     top: 50%;
@@ -175,19 +164,16 @@ button:active {
     width: 240px;
 }
 
-/* Bottom Left - Meet Real Shelter Cats */
 .feature-card:nth-child(5) {
     bottom: 0;
     left: 0;
 }
 
-/* Bottom Right - Easy In-App Donations */
 .feature-card:nth-child(6) {
     bottom: 0;
     right: 0;
 }
 
-/* Get Notified Section */
 .get-notified {
     margin-top: 80px;
 }
@@ -199,7 +185,6 @@ button:active {
     margin-bottom: 30px;
 }
 
-/* Email Form*/
 .email-form {
     display: flex;
     gap: 10px;
@@ -215,7 +200,7 @@ button:active {
     font-size: 1rem;
     width: 250px;
     background-color: white;
-    height: 48px; /* Set explicit height to match button */
+    height: 48px;
 }
 
 .submit-btn {
@@ -227,7 +212,7 @@ button:active {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
-    height: 48px; /* Match the height of the email input */
+    height: 48px;
     margin: 0;
 }
 
@@ -235,7 +220,6 @@ button:active {
     background-color: #d48a50;
 }
 
-/* Social Links */
 .social-links {
     display: flex;
     justify-content: center;
@@ -264,7 +248,6 @@ button:active {
     font-size: 1.2rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -291,7 +274,6 @@ button:active {
         font-size: 0.95rem;
     }
 
-    /* Stack feature cards on tablet */
     .features-container {
         min-height: auto;
         padding: 20px;
